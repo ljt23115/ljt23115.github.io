@@ -4,6 +4,7 @@ layout: post
 date: 2020-03-07
 tags: blog
 ---
+
 [[toc]]
 
 我的博客很长一段时间在使用新浪微博作为图床，自从新浪微博开始防外链，我博客文章很多配图丢失了。我意识到我需要一个稳定可靠的图床，所以开始用阿里云自建一个我自己的图床，目前已经稳定使用了大半年。
@@ -15,9 +16,11 @@ tags: blog
 > 声明：本文和阿里云没有任何利益关系。
 
 ## 本文的目标读者
+
 - 有自建图床的需求，且对国内访问速度有要求的。例如独立博客、独立摄影站，甚至独立播客主于用存放音频文件。
 
 ## 云服务做图床的原理
+
 ![原理图](https://gbstatic.djyde.com/uPic/Untitled%20%28Draft%29-1%206.jpg?x-oss-process=style/80)
 
 云服务产品有很多，搭建图床只需要关注 OSS 和 CDN. OSS 是对象存储服务，通俗来说就是用来存文件的。OSS 都有对应的域名，文件保存在 OSS 后，可以通过 URL 下载它。
@@ -25,6 +28,7 @@ tags: blog
 但是直接通过 OSS 下载的成本很高，价格十分昂贵，所以我们需要 CDN 来分发，节约成本。在阿里云，可以把 CDN 绑定到 OSS, 通过 CDN 去访问这个文件时，如果是首次访问，CDN 会从 OSS 取得这个文件，这个过程叫「回源」。之后再访问会直接从 CDN 读取。
 
 ## 步骤详解
+
 因为我自己用的是阿里云，所以以阿里云为例（假设你已经注册好帐号）。
 
 ### 创建一个 OSS Bucket
@@ -53,9 +57,9 @@ tags: blog
 
 ![添加域名](https://gbstatic.djyde.com/uPic/guk3mO.png?x-oss-process=style/80)
 
-比如你的域名是 blabla.com, 那么你的加速域名可以是 static.blabla.com. 
+比如你的域名是 blabla.com, 那么你的加速域名可以是 static.blabla.com.
 
-源站信息选「OSS域名」，选中之后会出现一个下拉选择，可以选中刚刚创建的 Bucket 源站：
+源站信息选「OSS 域名」，选中之后会出现一个下拉选择，可以选中刚刚创建的 Bucket 源站：
 
 ![源站域名](https://gbstatic.djyde.com/uPic/GPlUFe.png?x-oss-process=style/80)
 
@@ -87,9 +91,9 @@ CDN 防盗是有必要的，如果你的图片被别处盗用，会增加不必�
 
 ## 使用 uPic 方便上传图片
 
-以上的准备都做完后，你已经拥有了一个图床。现在就需要一个方便的工具把图片上传到图床。如果你用 macOS, 我推荐开源的 [uPic](https://github.com/gee1k/uPic) 
+以上的准备都做完后，你已经拥有了一个图床。现在就需要一个方便的工具把图片上传到图床。如果你用 macOS, 我推荐开源的 [uPic](https://github.com/gee1k/uPic)
 
-![upic](https://gbstatic.djyde.com/uPic/cqSMIR.gif) 
+![upic](https://gbstatic.djyde.com/uPic/cqSMIR.gif)
 
 ### 配置 uPic
 

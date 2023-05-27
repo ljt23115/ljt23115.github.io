@@ -9,7 +9,7 @@ module.exports = config => {
       md.use(toc)
     }
   }))
-  config.addPlugin(rss) 
+  config.addPlugin(rss)
   config.addPassthroughCopy("_redirects");
   config.addPassthroughCopy("favicon.ico");
 
@@ -17,6 +17,9 @@ module.exports = config => {
     return dayjs(content).format('YYYY/MM/DD')
   })
   return {
-    markdownTemplateEngine: false
+    markdownTemplateEngine: false,
+    dir: {
+      output: 'docs'
+    }
   };
 }
